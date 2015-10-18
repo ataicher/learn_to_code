@@ -1,0 +1,53 @@
+#!/usr/bin/python -tt
+
+import sys
+
+def rotate_matrix(M,n):
+  for i in range(n-1):
+    top = M[0][:]
+    left = M[:][0
+    tmp = M[0][i]
+    M[0][i] = M
+  if len(S) == 0:
+    return 0
+  current_char = S[0]
+  space_reduced = -1
+  for char in S[1:]:
+    if char == current_char:
+      space_reduced += 1
+    else:
+      current_char = char
+      space_reduced -= 1
+  return space_reduced
+    
+def compress(S):
+  S_comp_lst = []
+  current_char = S[0]
+  duplicates = 1
+  for char in S[1:]:
+    if char == current_char:
+      duplicates += 1
+    else:   
+      S_comp_lst.append(current_char)
+      S_comp_lst.append(str(duplicates))
+      current_char = char
+      duplicates = 1
+  S_comp_lst.append(current_char)
+  S_comp_lst.append(str(duplicates)) 
+  return  ''.join(S_comp_lst)
+
+def main():
+  print 'compress a string with duplicate adjacent characters'
+  if len(sys.argv) == 2:
+    n = int(sys.argv[1])
+  else:
+    n = 4
+    print 'using default 4x4 matrix:'
+ 
+  M = [[n*i+j for j in range(n)] for i in range(n)] 
+  for i in range(n):
+    print M[i]
+  
+# This is the standard boilerplate that calls the main() function.
+if __name__ == '__main__':
+  main()

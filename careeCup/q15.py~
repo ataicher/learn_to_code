@@ -1,0 +1,52 @@
+#!/usr/bin/python -tt
+
+import sys
+
+def is_smaller(S):
+  current_char = '\0'
+  space_reduced = 0
+  duplicates = 0
+  for char in S:
+    if char == current_char:
+      duplicates += 1
+      print 'added!'
+    else:
+      current_char = char
+      space_reduced += duplicates - 1
+      duplicates = 0
+  print space_reduced
+  return space_reduced + 1
+    
+def compress(S):
+  S_comp = []
+  current_char = S[0]
+  duplicates = 1
+  for char in S:
+    if char == current_char:
+      duplicates += 1
+    else:   
+      S_comp.append(char)
+      S_comp.append(str(duplicates))
+  S_comp = ''.join(S_comp)
+  return S_comp  
+def main():
+  print 'replace the spaces in a string with the chars \'%20\''
+  if len(sys.argv) == 2:
+    S = sys.argv[1]
+    print 'S =', S
+  else:
+    S = 'hello world '
+    print 'using default string:\nS = hello world '
+  
+  # ensure that the string is compressed
+  space_reduced = is_smaller(S)
+  if space_reduced > 0:
+    S_comp = compress(S)
+    print 'new string = ' + S
+  else:
+    print 'the compression algorithm could not reduce the size of the string S = ' + S
+  
+    
+# This is the standard boilerplate that calls the main() function.
+if __name__ == '__main__':
+  main()

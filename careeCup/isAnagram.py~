@@ -1,0 +1,35 @@
+#!/usr/bin/python -tt
+
+import sys
+
+def main():
+  print 'find out if two strings are anagrams'
+  if len(sys.argv) >= 3:
+    S1 = sys.argv[1]
+    S2 = sys.argv[2]
+    print 'S1 =', S1
+    print 'S2 =', S2
+  else:
+    S1 = 'Namibia'
+    S2 = 'I am a bin'
+    print 'using default strings:\nS1 = Namibia\nS2 = I am a bin'
+  
+  isAnagram = True
+  S1 = S1.replace(' ',''); S2 = S2.replace(' ','')
+  if len(S1) != len(S2):
+    isAnagram = False
+  else:
+    S1 = S1.lower(); S2 = S2.lower()
+    S1 = sorted(S1); S2 = sorted(S2)
+    for i in range(len(S1)):
+      if S1[i] != S2[i]:
+        isAnagram = False
+
+  if isAnagram:
+    print 'the two strings are anagrams!'
+  else:
+    print 'sorry. The two strings are not anagrams'
+  
+# This is the standard boilerplate that calls the main() function.
+if __name__ == '__main__':
+  main()
