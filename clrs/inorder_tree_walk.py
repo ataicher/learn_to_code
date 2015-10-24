@@ -11,53 +11,42 @@ class Node(object):
     print 'node:'
 
 class BST(object):
-  def __init__(self,A = []):
-    if isinstance(A, int)
-      self.root = Node(A)
-    elif: isinstance(A, list)
-      if A:
-        self.root = Node(A[0])
-        for key in A[1:]:
-          T.insert(A,key)
-      else:
-        self.root = Node()
+  def __init__(self, A = []):
+    if A:
+      self.root = Node(A[0])
+      for key in A[1:]:
+        self.insert(key)
     else:
-      return 'invalid input to create BST'
-
-  def insert(self,z):
+        self.root = Node()
+    
+  def insert(self,key):
     y = None
     x = self.root
     while x:
       y = x
-      if z.val < x.val:
+      if key < x.key:
         x = x.left
       else:
         x = x.right
-    if z.key < y.key:
-      y.left = z
+    if key < y.key:
+      y.left = Node(key)
     else:
-      y.right = z
+      y.right = Node(key)
 
   def __str__(self):
-   def inorder_iterate(self):
-     if self.root is None:
-       print 'empty BST'
-     stk=[]
-     stk.append((self.root,'not done'))
-     while len(stk)>0:
-       u,state=stk.pop()
-       if state=='not done':
-         if u.right is not None:
-           stk.append((u.right,'not done'))
-         stk.append((u,'done'))
-         if u.left is not None:
-           stk.append((u.left,'not done'))
-       else: #state=='done'
-         print A
-    
-def create_BST(A):
-
-  BST = 
+    if not self.root:
+       return 'empty BST'
+    stk = []
+    lst = []
+    curr = self.root
+    while curr:
+      stk.append(curr)
+      curr = curr.left
+      while not curr and stk:
+        node = stk.pop()
+        lst.append(node.key)
+        curr = node.right
+    return str(lst)
 
 # main function that tests the code
 def main():
@@ -65,14 +54,9 @@ def main():
   A = [0] * N
   for i in xrange(N):
     A[i] = randint(0,N)
-
-  create_BST(A)
-
   print A
-
-  quick_sort(A,0,N)
-  
-  print A
+  t = BST(A)
+  print t
   
 if __name__ == '__main__':
   main()
